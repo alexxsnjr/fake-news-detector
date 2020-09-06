@@ -15,7 +15,7 @@ public class OkDiarioParser extends NewspaperParser {
     private static final String BODY_SELECTOR = "div.entry-content p";
 
     @Override
-    public New start() {
+    public New start() throws Exception{
         Document doc = getDoc();
 
         New newParsed = new New();
