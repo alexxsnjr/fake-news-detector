@@ -6,10 +6,13 @@ import com.fakenews.commons.fakenewsCommons.models.dao.NewspaperRepository;
 import com.fakenews.commons.fakenewsCommons.models.entity.Author;
 import com.fakenews.commons.fakenewsCommons.models.entity.New;
 import com.fakenews.commons.fakenewsCommons.models.entity.Newspaper;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Setter
 @Service
 public class PersistenceService implements IPersistenceService {
 
@@ -61,15 +64,4 @@ public class PersistenceService implements IPersistenceService {
         return INSTANCE;
     }
 
-    public void setAuthorRepository(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
-    }
-
-    public void setNewRepository(NewRepository newRepository) {
-        this.newRepository = newRepository;
-    }
-
-    public void setNewspaperRepository(NewspaperRepository newspaperRepository) {
-        this.newspaperRepository = newspaperRepository;
-    }
 }
