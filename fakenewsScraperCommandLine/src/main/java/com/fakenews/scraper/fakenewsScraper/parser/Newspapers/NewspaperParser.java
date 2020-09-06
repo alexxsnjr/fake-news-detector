@@ -7,7 +7,7 @@ public abstract class NewspaperParser {
     private String url;
     private Document doc;
 
-    public abstract New start();
+    public abstract New start() throws Exception;
 
     public String getUrl() {
         return url;

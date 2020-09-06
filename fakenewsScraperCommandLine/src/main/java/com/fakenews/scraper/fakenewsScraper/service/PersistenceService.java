@@ -7,7 +7,9 @@ import com.fakenews.commons.fakenewsCommons.models.entity.Author;
 import com.fakenews.commons.fakenewsCommons.models.entity.New;
 import com.fakenews.commons.fakenewsCommons.models.entity.Newspaper;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class PersistenceService implements IPersistenceService {
 
@@ -29,8 +31,8 @@ public class PersistenceService implements IPersistenceService {
         Newspaper newspaper = newspaperRepository.findByName(newParsed.getNewspaper().getName());
         New  newFromDatabase = newRepository.findByUrl(newParsed.getUrl());
 
-
         if(newFromDatabase == null){
+            log.info(String.format("PERSISTIENDO --  %s", newParsed.getUrl()));
             New newToPersist = new New();
             newToPersist.setUrl(newParsed.getUrl());
             newToPersist.setBody(newParsed.getBody());

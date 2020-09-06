@@ -7,7 +7,9 @@ import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class CrawlerService {
 	private List<String>  crawlDomains;
     private String crawlStorageFolder;
@@ -39,8 +41,7 @@ public class CrawlerService {
 		try {
 			controller = new CrawlController(config, fetcher, robotsSvr);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		    log.error("Error creando crawler", e);
 		}
         for (String domain : crawlDomains) {
             controller.addSeed(domain);

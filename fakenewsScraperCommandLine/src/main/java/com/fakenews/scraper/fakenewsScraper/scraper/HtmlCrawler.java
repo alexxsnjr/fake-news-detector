@@ -46,10 +46,8 @@ public class HtmlCrawler extends WebCrawler {
      
         if (page.getParseData() instanceof HtmlParseData) {
             htmlData = (HtmlParseData) page.getParseData();
-
             ParserController parserController = new ParserController();
             parserController.startParse(htmlData, url);
-
         }
     }
     

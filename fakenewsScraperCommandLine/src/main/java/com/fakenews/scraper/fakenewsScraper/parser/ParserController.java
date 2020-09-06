@@ -4,11 +4,13 @@ import com.fakenews.commons.fakenewsCommons.models.entity.New;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.NewspaperParser;
 import com.fakenews.scraper.fakenewsScraper.service.PersistenceService;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+@Slf4j
 public class ParserController {
     private FactoryParser factoryPaths;
 
@@ -18,7 +20,7 @@ public class ParserController {
             Document doc = Jsoup.connect(url).get();
             startParse(doc, url);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error al descargar noticia",e);
         }
     }
 
@@ -32,7 +34,14 @@ public class ParserController {
         NewspaperParser newsParser = factoryPaths.getNewspaperParser(url);
         newsParser.setDoc(doc);
         newsParser.setUrl(url);
-        New newParsed = newsParser.start();
+
+        New newParsed = null;
+        try {
+            newParsed = newsParser.start();
+        } catch (Exception e) {
+            log.info(String.format("Error al parsear --  %s", url) , e);
+
+        }
 
         PersistenceService persistenceService = PersistenceService.getInstance();
         persistenceService.saveNew(newParsed);
