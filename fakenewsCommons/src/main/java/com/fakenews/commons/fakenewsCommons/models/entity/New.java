@@ -15,10 +15,10 @@ public class New implements Serializable {
 
     private String body;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Author author;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Newspaper newspaper;
 
     @Column(name = "create_at")
