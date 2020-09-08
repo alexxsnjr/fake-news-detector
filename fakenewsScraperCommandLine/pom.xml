@@ -8,8 +8,8 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.fakenews.commons</groupId>
-	<artifactId>fakenewsCommons</artifactId>
+	<groupId>com.fakenews.scraper.CommandLine</groupId>
+	<artifactId>fakenewsScraperCommandLine</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<name>fakenewsScraperCommandLine</name>
 	<description>Demo project for Spring Boot</description>
