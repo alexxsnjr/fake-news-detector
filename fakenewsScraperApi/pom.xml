@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.fakenews.scraper.api</groupId>
 	<artifactId>fakenewsScraperApi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>fakenewsScraperApi</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -21,16 +21,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.fakenews.commons</groupId>
 			<artifactId>fakenewsCommons</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>0.0.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
