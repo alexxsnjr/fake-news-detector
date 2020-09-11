@@ -43,9 +43,6 @@ public class CommandLineRunner implements ApplicationRunner {
             }
             if (optionName.equals("regex")) {
                 regex = args.getOptionValues(optionName).get(0);
-            } else {
-                log.warn(String.format("No hay Expresion Regular para las noticias"));
-                regex = "";
             }
         });
 
