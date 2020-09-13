@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -45,6 +46,9 @@ public class NewService implements INewService {
         if(newFromDatabase == null){
             log.info(String.format("NOTICIA NUEVA --  %s", newParsed.getUrl()) );
             New newToPersist = new New();
+            Date date = new Date();
+
+            newToPersist.setCreateAt(date);
             newToPersist.setUrl(newParsed.getUrl());
             newToPersist.setBody(newParsed.getBody());
 
