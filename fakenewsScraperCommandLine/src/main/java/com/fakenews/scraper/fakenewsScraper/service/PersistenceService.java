@@ -1,6 +1,5 @@
 package com.fakenews.scraper.fakenewsScraper.service;
 
-
 import com.fakenews.commons.fakenewsCommons.models.entity.New;
 import com.fakenews.scraper.fakenewsScraper.restClient.NewsClientRest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ public class PersistenceService implements IPersistenceService {
 
     @Autowired
     private NewsClientRest restClient;
-
 
     @Override
     public void save(New newParsed) {

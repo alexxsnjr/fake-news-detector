@@ -26,7 +26,6 @@ public class CommandLineRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        //Validacion parametros
         args.getOptionNames().forEach(optionName -> {
             if (optionName.equals("domain") && !args.getOptionValues(optionName).isEmpty()) {
                 crawlDomains.addAll(args.getOptionValues(optionName));

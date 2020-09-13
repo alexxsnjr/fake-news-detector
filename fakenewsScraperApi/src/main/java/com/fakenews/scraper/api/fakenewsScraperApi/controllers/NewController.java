@@ -4,11 +4,12 @@ import com.fakenews.commons.fakenewsCommons.models.entity.*;
 import com.fakenews.scraper.api.fakenewsScraperApi.service.INewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -17,11 +18,15 @@ public class NewController {
     private INewService newService;
 
     @GetMapping("/list")
-    public List<New> list(){
-        return newService.findAll()
-                .stream()
-                .map(newParsed ->{ return newParsed; })
-                .collect(Collectors.toList());
+    public List<New> getBetweenDate(@RequestParam(name="date_from",required = false)
+                                        @DateTimeFormat(pattern="yyyy-MM-dd") Date dateFrom,
+                                    @RequestParam(name="date_to" ,required = false)
+                                        @DateTimeFormat(pattern="yyyy-MM-dd") Date dateTo) throws ParseException {
+
+        if (dateFrom == null || dateTo == null)
+            return newService.findAll();
+
+        return newService.getBetweenDate(dateFrom,dateTo);
     }
 
     @GetMapping("/show/{id}")
