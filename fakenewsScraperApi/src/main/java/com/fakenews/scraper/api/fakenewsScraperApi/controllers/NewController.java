@@ -2,14 +2,15 @@ package com.fakenews.scraper.api.fakenewsScraperApi.controllers;
 
 import com.fakenews.commons.fakenewsCommons.models.entity.*;
 import com.fakenews.scraper.api.fakenewsScraperApi.service.INewService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 public class NewController {
     @Autowired
@@ -29,6 +30,11 @@ public class NewController {
         return newParsed;
     }
 
-
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public New create(@RequestBody New newParsed) {
+        log.info(String.format("Petición persistencia --  %s", newParsed.getUrl()) );
+        return newService.save(newParsed);
+    }
 
 }

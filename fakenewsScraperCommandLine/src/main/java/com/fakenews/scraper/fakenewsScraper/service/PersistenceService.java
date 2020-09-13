@@ -23,6 +23,7 @@ public class PersistenceService implements IPersistenceService {
 
     @Override
     public void save(New newParsed) {
+        log.info(String.format("Enviando noticia a la api --  %s", newParsed.getUrl()));
         restClient.create(newParsed);
     }
 

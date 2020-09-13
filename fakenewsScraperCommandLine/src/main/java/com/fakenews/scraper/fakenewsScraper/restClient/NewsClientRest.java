@@ -10,7 +10,7 @@ import java.util.List;
  * @author Alex Sánchez - @AleXxSnJR
  */
 
-@FeignClient("news-api")
+@FeignClient(name = "news-api", url = "localhost:8090")
 public interface NewsClientRest {
     @GetMapping("/list")
     public List<New> list();

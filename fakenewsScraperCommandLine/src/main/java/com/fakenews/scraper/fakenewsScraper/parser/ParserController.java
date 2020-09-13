@@ -55,13 +55,10 @@ public class ParserController {
         New newParsed = null;
         try {
             newParsed = newsParser.start();
+            presistenceService.save(newParsed);
         } catch (Exception e) {
             log.info(String.format("Error al parsear --  %s", url) , e);
-
         }
-
-        presistenceService.save(newParsed);
-
     }
 
 }
