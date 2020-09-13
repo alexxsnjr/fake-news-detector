@@ -2,27 +2,33 @@ package com.fakenews.scraper.fakenewsScraper.scraper;
 
 import java.util.List;
 
+import com.fakenews.scraper.fakenewsScraper.parser.ParserController;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 
 @Slf4j
+@Component
+@Setter
 public class CrawlerService {
+
+    @Autowired
+    ParserController parserController;
+
 	private List<String>  crawlDomains;
-    private String crawlStorageFolder;
+    private  static final String crawlStorageFolder = "./crawlerHtml";;
 	private int numberOfCrawlers;
 	private String newsRegexFilters;
-
-	public CrawlerService(List<String> crawlDomains, Integer numberOfCrawlers, String newsRegexFilters) {
-		this.crawlDomains = crawlDomains;
-        crawlStorageFolder = "./crawlerHtml";
-        this.numberOfCrawlers = numberOfCrawlers;
-        this.newsRegexFilters=newsRegexFilters;
-	}
-
 
 	public void start() {
 
@@ -47,7 +53,7 @@ public class CrawlerService {
             controller.addSeed(domain);
         }
 
-        HtmlCrawler.configure(crawlDomains, crawlStorageFolder,newsRegexFilters );
+        HtmlCrawler.configure(crawlDomains, crawlStorageFolder,newsRegexFilters,parserController );
         controller.start(HtmlCrawler.class, numberOfCrawlers);
 	}
 

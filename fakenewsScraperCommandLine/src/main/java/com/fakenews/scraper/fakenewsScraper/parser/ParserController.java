@@ -2,17 +2,27 @@ package com.fakenews.scraper.fakenewsScraper.parser;
 
 import com.fakenews.commons.fakenewsCommons.models.entity.New;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.NewspaperParser;
-import com.fakenews.scraper.fakenewsScraper.service.PersistenceService;
+import com.fakenews.scraper.fakenewsScraper.service.IPersistenceService;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 @Slf4j
+@Component
 public class ParserController {
     private FactoryParser factoryPaths;
+
+    @Autowired
+    private IPersistenceService presistenceService;
 
     //todo: gestionar descarga cuando solo tenemos la url
     public void startParse(String url) {
@@ -29,6 +39,13 @@ public class ParserController {
         startParse(doc, url);
     }
 
+    /**
+     * call the newspaper factory and create a parser according to the newspaper
+     * and send the new to the api to persist
+     *
+     * @param doc - HTML parser to Document
+     * @param url -  New url
+     */
     public void startParse(Document doc, String url) {
 
         NewspaperParser newsParser = factoryPaths.getNewspaperParser(url);
@@ -38,14 +55,10 @@ public class ParserController {
         New newParsed = null;
         try {
             newParsed = newsParser.start();
+            presistenceService.save(newParsed);
         } catch (Exception e) {
             log.info(String.format("Error al parsear --  %s", url) , e);
-
         }
-
-        PersistenceService persistenceService = PersistenceService.getInstance();
-        persistenceService.saveNew(newParsed);
-
     }
 
 }
