@@ -3,7 +3,9 @@ package com.fakenews.scraper.fakenewsScraper.parser;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.ElDiarioES;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.NewspaperParser;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.OkDiarioParser;
-
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 public class FactoryParser {
     public static NewspaperParser getNewspaperParser(String url) {
 

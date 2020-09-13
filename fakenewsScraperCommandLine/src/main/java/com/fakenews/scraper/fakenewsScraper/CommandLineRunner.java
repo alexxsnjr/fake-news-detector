@@ -1,10 +1,5 @@
 package com.fakenews.scraper.fakenewsScraper;
-
-import com.fakenews.commons.fakenewsCommons.models.dao.AuthorRepository;
-import com.fakenews.commons.fakenewsCommons.models.dao.NewRepository;
-import com.fakenews.commons.fakenewsCommons.models.dao.NewspaperRepository;
 import com.fakenews.scraper.fakenewsScraper.scraper.CrawlerService;
-import com.fakenews.scraper.fakenewsScraper.service.PersistenceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -14,21 +9,19 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 @Slf4j
 @Component
 public class CommandLineRunner implements ApplicationRunner {
 
+    @Autowired
+    CrawlerService crawler;
+
     private List<String> crawlDomains = new ArrayList<String>();
     private Integer threads;
     private String regex;
-
-    @Autowired
-    private AuthorRepository authorRepository;
-    @Autowired
-    private NewRepository newRepository;
-    @Autowired
-    private NewspaperRepository newspaperRepository;
-
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -49,14 +42,10 @@ public class CommandLineRunner implements ApplicationRunner {
         if (threads == null)
             threads = 4;
 
-        //TODO:quitar esta mierda y usar inyeccion de dependencias
-        PersistenceService persistenceService = PersistenceService.getInstance();
-        persistenceService.setAuthorRepository(authorRepository);
-        persistenceService.setNewRepository(newRepository);
-        persistenceService.setNewspaperRepository(newspaperRepository);
-
-        //TODO:parametrizar regex
-        CrawlerService crawler = new CrawlerService(crawlDomains, threads, regex);
+        crawler.setNumberOfCrawlers(threads);
+        crawler.setNewsRegexFilters(regex);
+        crawler.setCrawlDomains(crawlDomains);
         crawler.start();
     }
+
 }

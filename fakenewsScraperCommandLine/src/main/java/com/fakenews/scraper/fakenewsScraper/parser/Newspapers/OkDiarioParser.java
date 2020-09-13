@@ -6,6 +6,9 @@ import com.fakenews.commons.fakenewsCommons.models.entity.Newspaper;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 public class OkDiarioParser extends NewspaperParser {
 
     private static final String AUTHOR_SELECTOR = "li.author-name a";
@@ -14,6 +17,11 @@ public class OkDiarioParser extends NewspaperParser {
     private static final String NEWSPAPER_ATTRIBUTE = "id";
     private static final String BODY_SELECTOR = "div.entry-content p";
 
+    /**
+     * Gets the HTML nodes with cssSelector and create the Object New
+     * @return Object New
+     * @throws Exception if unable to parse any element
+     */
     @Override
     public New start() throws Exception{
         Document doc = getDoc();
