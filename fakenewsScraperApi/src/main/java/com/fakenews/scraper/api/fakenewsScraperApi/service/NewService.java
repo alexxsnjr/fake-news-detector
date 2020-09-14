@@ -77,4 +77,9 @@ public class NewService implements INewService {
     public void deleteById(Long id) {
         newRepository.deleteById(id);
     }
+
+    public List<New> getBetweenDate(Date dateFrom, Date dateTo) {
+        return (List<New>) newRepository.getBetweenDate(dateFrom,dateTo);
+    }
+
 }

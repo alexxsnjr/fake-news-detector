@@ -1,7 +1,7 @@
 package com.fakenews.scraper.api.fakenewsScraperApi.service;
 
 import com.fakenews.commons.fakenewsCommons.models.entity.New;
-
+import java.util.Date;
 import java.util.List;
 
 public interface INewService {
@@ -9,4 +9,5 @@ public interface INewService {
     public New findById(Long id);
     public New save(New producto);
     public void deleteById(Long id);
+    public List<New> getBetweenDate(Date dateFrom, Date dateTo);
 }
