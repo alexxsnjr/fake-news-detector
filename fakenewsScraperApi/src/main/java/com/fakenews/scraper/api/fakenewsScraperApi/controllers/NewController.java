@@ -11,13 +11,20 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Alex Sánchez - @AleXxSnJR
+ */
 @Slf4j
 @RestController
+@RequestMapping("news")
 public class NewController {
+
+    private final String CURRENT_API_VERSION = "/v0";
+
     @Autowired
     private INewService newService;
 
-    @GetMapping("/list")
+    @GetMapping(CURRENT_API_VERSION+"/list")
     public List<New> getBetweenDate(@RequestParam(name="date_from",required = false)
                                         @DateTimeFormat(pattern="yyyy-MM-dd") Date dateFrom,
                                     @RequestParam(name="date_to" ,required = false)
@@ -29,13 +36,13 @@ public class NewController {
         return newService.getBetweenDate(dateFrom,dateTo);
     }
 
-    @GetMapping("/show/{id}")
+    @GetMapping(CURRENT_API_VERSION+"/show/{id}")
     public New show(@PathVariable Long id)  {
         New newParsed = newService.findById(id);
         return newParsed;
     }
 
-    @PostMapping("/create")
+    @PostMapping(CURRENT_API_VERSION+"/create")
     @ResponseStatus(HttpStatus.CREATED)
     public New create(@RequestBody New newParsed) {
         log.info(String.format("Petición persistencia --  %s", newParsed.getUrl()) );
