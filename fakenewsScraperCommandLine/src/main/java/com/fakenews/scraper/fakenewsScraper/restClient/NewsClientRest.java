@@ -10,21 +10,24 @@ import java.util.List;
  * @author Alex Sánchez - @AleXxSnJR
  */
 
-@FeignClient(name = "news-api", url = "localhost:8090")
+@FeignClient(name = "news-api", url = "localhost:8090", configuration = FeignClientConfig.class)
 public interface NewsClientRest {
-    @GetMapping("/list")
+
+    final String CURRENT_API_VERSION = "v0";
+
+    @GetMapping("/news/"+CURRENT_API_VERSION+"/list")
     public List<New> list();
 
-    @GetMapping("/show/{id}")
+    @GetMapping("/news/"+CURRENT_API_VERSION+"/show/{id}")
     public New detalle(@PathVariable Long id);
 
-    @PostMapping("/create")
+    @PostMapping("/news/"+CURRENT_API_VERSION+"/create")
     public New create(@RequestBody New newParsed);
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/news/"+CURRENT_API_VERSION+"/edit/{id}")
     public New update(@RequestBody New newParsed, @PathVariable Long id);
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/news/"+CURRENT_API_VERSION+"/delete/{id}")
     public void delete(@PathVariable Long id);
 
 }
