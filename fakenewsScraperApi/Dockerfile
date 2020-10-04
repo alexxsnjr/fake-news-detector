@@ -5,7 +5,7 @@ FROM openjdk:11
 LABEL maintainer="alexxsnjr@gmail.com"
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8090
 
 # The application's jar file
 ARG JAR_FILE=target/fakenewsScraperApi-0.0.4-SNAPSHOT.jar
@@ -14,4 +14,4 @@ ARG JAR_FILE=target/fakenewsScraperApi-0.0.4-SNAPSHOT.jar
 ADD ${JAR_FILE} fakenewsScraperApi.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","/fakenewsScraperApi.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./fakenewsScraperApi.jar"]
