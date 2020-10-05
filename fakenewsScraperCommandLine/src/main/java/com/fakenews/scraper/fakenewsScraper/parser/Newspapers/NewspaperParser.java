@@ -1,6 +1,6 @@
 package com.fakenews.scraper.fakenewsScraper.parser.Newspapers;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
 import lombok.Getter;
 import lombok.Setter;
 import org.jsoup.nodes.Document;

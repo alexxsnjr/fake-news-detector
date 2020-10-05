@@ -1,6 +1,6 @@
 package com.fakenews.scraper.fakenewsScraper.service;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
 import com.fakenews.scraper.fakenewsScraper.restClient.NewsClientRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

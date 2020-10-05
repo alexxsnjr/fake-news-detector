@@ -1,17 +1,16 @@
-# Start with a base image containing Java runtime
+FROM maven:3.6.3-jdk-11 AS MAVEN_BUILD
+
+MAINTAINER alexxsnjr
+
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+
+RUN mvn package
+
+
 FROM openjdk:11
-
-# Add Maintainer Info
-LABEL maintainer="alexxsnjr@gmail.com"
-
-# Make port 8080 available to the world outside this container
 EXPOSE 8090
-
-# The application's jar file
-ARG JAR_FILE=target/fakenewsScraperApi-0.0.4-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} fakenewsScraperApi.jar
-
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./fakenewsScraperApi.jar"]
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/fakenewsScraperApi-0.0.4-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "fakenewsScraperApi-0.0.4-SNAPSHOT.jar"]

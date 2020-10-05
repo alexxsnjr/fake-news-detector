@@ -1,6 +1,6 @@
 package com.fakenews.scraper.fakenewsScraper.parser;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
 import com.fakenews.scraper.fakenewsScraper.parser.Newspapers.NewspaperParser;
 import com.fakenews.scraper.fakenewsScraper.service.IPersistenceService;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

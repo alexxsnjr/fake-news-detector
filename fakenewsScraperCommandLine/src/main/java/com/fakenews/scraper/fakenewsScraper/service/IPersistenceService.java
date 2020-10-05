@@ -1,6 +1,6 @@
 package com.fakenews.scraper.fakenewsScraper.service;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
 import java.util.List;
 
 /**

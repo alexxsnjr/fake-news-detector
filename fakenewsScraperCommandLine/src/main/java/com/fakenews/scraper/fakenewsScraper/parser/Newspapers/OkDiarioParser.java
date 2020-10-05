@@ -1,8 +1,8 @@
 package com.fakenews.scraper.fakenewsScraper.parser.Newspapers;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.Author;
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
-import com.fakenews.commons.fakenewsCommons.models.entity.Newspaper;
+import com.fakenews.scraper.fakenewsScraper.pojo.Author;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.Newspaper;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 

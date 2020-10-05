@@ -1,4 +1,4 @@
-package com.fakenews.commons.fakenewsCommons.models.entity;
+package com.fakenews.scraper.api.fakenewsScraperApi.models.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

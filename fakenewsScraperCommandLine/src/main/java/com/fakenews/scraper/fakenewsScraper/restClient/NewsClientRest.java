@@ -1,6 +1,6 @@
 package com.fakenews.scraper.fakenewsScraper.restClient;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.fakenewsScraper.pojo.New;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

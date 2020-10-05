@@ -1,6 +1,6 @@
 package com.fakenews.scraper.api.fakenewsScraperApi.service;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.New;
 import java.util.Date;
 import java.util.List;
 

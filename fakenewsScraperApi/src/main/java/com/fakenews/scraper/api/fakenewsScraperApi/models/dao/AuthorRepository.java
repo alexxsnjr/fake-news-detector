@@ -1,6 +1,6 @@
-package com.fakenews.commons.fakenewsCommons.models.dao;
+package com.fakenews.scraper.api.fakenewsScraperApi.models.dao;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.Author;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.Author;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

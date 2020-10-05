@@ -1,6 +1,6 @@
 package com.fakenews.scraper.api.fakenewsScraperApi.controllers;
 
-import com.fakenews.commons.fakenewsCommons.models.entity.*;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.*;
 import com.fakenews.scraper.api.fakenewsScraperApi.service.INewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

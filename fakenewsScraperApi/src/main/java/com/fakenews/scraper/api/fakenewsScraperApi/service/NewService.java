@@ -1,11 +1,11 @@
 package com.fakenews.scraper.api.fakenewsScraperApi.service;
 
-import com.fakenews.commons.fakenewsCommons.models.dao.AuthorRepository;
-import com.fakenews.commons.fakenewsCommons.models.dao.NewRepository;
-import com.fakenews.commons.fakenewsCommons.models.dao.NewspaperRepository;
-import com.fakenews.commons.fakenewsCommons.models.entity.Author;
-import com.fakenews.commons.fakenewsCommons.models.entity.New;
-import com.fakenews.commons.fakenewsCommons.models.entity.Newspaper;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.dao.AuthorRepository;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.dao.NewRepository;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.dao.NewspaperRepository;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.Author;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.New;
+import com.fakenews.scraper.api.fakenewsScraperApi.models.entity.Newspaper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
