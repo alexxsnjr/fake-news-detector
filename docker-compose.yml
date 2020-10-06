@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mysql-db:
+    container_name: mysql-db
+    image: "mysql:8.0" 
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d/initial.sql
+        
+  fake-news-detector-api:
+    container_name: fake-news-detector-api
+    image: alexxsnjr/fake-news-detector-api:api
+    restart: on-failure
+    ports:
+      - "8090:8090"
+    depends_on: 
+      - mysql-db  
+    
+    
