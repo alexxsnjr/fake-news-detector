@@ -3,14 +3,20 @@ services:
   mysql-db:
     container_name: mysql-db
     image: "mysql:8.0" 
+    cap_add:
+      - SYS_NICE
     ports:
       - "3306:3306"
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: 1234s
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - ./mysql-data:/var/lib/mysql
-      - ./mysql-init:/docker-entrypoint-initdb.d/initial.sql
+      - ./mysql-init:/docker-entrypoint-initdb.d/
+
+
         
   fake-news-detector-api:
     container_name: fake-news-detector-api
