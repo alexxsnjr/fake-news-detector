@@ -7,10 +7,6 @@ import pickle
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
-
-from nltk import word_tokenize
-from nltk.stem import SnowballStemmer
-from nltk.stem.porter import PorterStemmer
 from unidecode import unidecode
 from nltk.corpus import stopwords
 
@@ -73,6 +69,13 @@ tfidf_df = pd.DataFrame(tfidf_train.A, columns=tfidf_vect.get_feature_names())
 
 Adab = AdaBoostClassifier(DecisionTreeClassifier(max_depth=10),n_estimators=5,random_state=1)
 Adab.fit(tfidf_train, y_train)
+
 y_pred3 = Adab.predict(tfidf_test)
 ABscore = metrics.accuracy_score(y_test,y_pred3)
 print("accuracy: %0.3f" %ABscore)
+
+DecTree = open('DecTree.sav', 'wb')
+pickle.dump(Adab, DecTree)
+DecTree.close()
+
+# Accuracy: 0.777
