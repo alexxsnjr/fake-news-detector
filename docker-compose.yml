@@ -20,7 +20,7 @@ services:
         
   fake-news-detector-api:
     container_name: fake-news-detector-api
-    image: alexxsnjr/fake-news-detector-api:api
+    image: alexxsnjr/fake-news-detector-api:latest
     restart: on-failure
     ports:
       - "8090:8090"
