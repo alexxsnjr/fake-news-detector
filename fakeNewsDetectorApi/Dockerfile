@@ -12,5 +12,5 @@ RUN mvn package
 FROM openjdk:11
 EXPOSE 8090
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/fakenewsScraperApi-0.0.4-SNAPSHOT.jar /app/
+COPY --from=MAVEN_BUILD /build/target/FakeNewsDetectorApi-0.0.4-SNAPSHOT.jar /app/
 ENTRYPOINT ["java", "-jar", "FakeNewsDetectorApi-0.0.4-SNAPSHOT.jar"]
